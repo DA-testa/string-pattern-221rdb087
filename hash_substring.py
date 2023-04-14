@@ -1,15 +1,18 @@
 # python 3
 def read_input():
-    # Read input from keyboard or file
-    input_type = input().rstrip()
-    if input_type == 'i':
+    input_type = input().strip().lower()
+    if input_type == "i":
         pattern = input().rstrip()
         text = input().rstrip()
-    elif input_type == 'f':
-        with open(input().rstrip(), 'r') as f:
-            pattern = f.readline().rstrip()
-            text = f.readline().rstrip()
+    elif input_type == "f":
+        filename = input().rstrip()
+        with open(filename, "r") as file:
+            pattern = file.readline().rstrip()
+            text = file.readline().rstrip()
+    else:
+        raise ValueError("Invalid input type")
     return pattern, text
+
 
 def print_occurrences(output):
 
